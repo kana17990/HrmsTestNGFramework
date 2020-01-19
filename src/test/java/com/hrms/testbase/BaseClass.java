@@ -16,7 +16,7 @@ public class BaseClass {
     public void setUp() {
         switch (Constants.BROWSER.toLowerCase()) {
         case "chrome":
-            System.setProperty("webdriver.chrome.driver", Constants.CHROME_DRIVER_PATH);
+            System.setProperty("webdriver.chrome.driver","/Users/assel/eclipse-workspace/HRMS/drivers/chromedriver");
             driver = new ChromeDriver();
             break;
         case "firefox":
@@ -26,17 +26,21 @@ public class BaseClass {
         default:
             System.err.println("Browser is not supported");
         }
-        driver.manage().timeouts().pageLoadTimeout(Constants.PAGE_LOAD_TIME, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(Constants.IMPLICIT_LOAD_TIME, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        driver.get(Constants.HRMS_URL);
+       driver.manage().timeouts().pageLoadTimeout(Constants.PAGE_LOAD_TIME,TimeUnit.SECONDS);
+       driver.manage().timeouts().implicitlyWait(Constants.IMPLICIT_LOAD_TIME,TimeUnit.SECONDS);
+       driver.manage().window().maximize();
+       //driver.manage().window().maximize();
+       
+       driver.get(Constants.HRMS_URL);
     }
-    @AfterMethod
+    
+   
+    @AfterMethod(alwaysRun=true)
     public void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
+    	if(driver !=null) {
+    		driver.quit();
+    	}
     }
-}
+    }
 
 

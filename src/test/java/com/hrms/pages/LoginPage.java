@@ -12,6 +12,7 @@ public class LoginPage extends BaseClass{
 	public WebElement loginBtn=driver.findElement(By.id("btnLogin"));
 	//public WebElement errMsg=driver.findElement(By.id("spanMessage"));
 	public WebElement logo=driver.findElement(By.xpath("//div[@id='divLogo']"));
+	public WebElement errMsg;
 
 }	
 	
