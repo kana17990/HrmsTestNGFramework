@@ -3,17 +3,14 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.testcases.LoginPageTest">
+      <class name="com.hrms.testcases.LoginPageTest">
         <methods>
-          <include name="PwderrMsgValidation"/>
-          <include name="User_errMsg_Validation"/>
-          <include name="LogoValidation"/>
+          <include name="login"/>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="login"/>
-          <include name="errMsgValidation"/>
+          <include name="negativeLogin"/>
         </methods>
-      </class> <!-- com.testcases.LoginPageTest -->
+      </class> <!-- com.hrms.testcases.LoginPageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

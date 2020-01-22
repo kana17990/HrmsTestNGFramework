@@ -2,7 +2,6 @@ package com.hrms.utils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
@@ -13,16 +12,15 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.hrms.testbase.BaseClass;
+
 //command+o--> for mac to see all methods within the class
 //ctrl+o--> for windows
 public class CommonMethods extends BaseClass {
-	
+
 	/**
 	 * This method will accept the alert
 	 * 
@@ -214,4 +212,12 @@ public class CommonMethods extends BaseClass {
 	public static void waitForInvisibility(WebElement element) {
 		getWaitObject().until(ExpectedConditions.invisibilityOf(element));
 	}
-}	
+	/**
+	 * This method will click on the element
+	 * @param element
+	 */
+	public static void click(WebElement element) {
+		waitForClickability(element);
+		element.click();
+	}
+}
