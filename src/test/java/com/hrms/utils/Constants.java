@@ -16,6 +16,16 @@ public static final String CREDENTIALS_FILEPATH="/Users/assel/eclipse-workspace/
 
 public static final  String HRMS_URL="http://166.62.36.207/Syntax_HRM";
 
+public static  final String XL_DATA_FILEPATH="/Users/assel/eclipse-workspace/HRMS/src/test/resources/testdata/HrmsTestData.xlsx";
+
+public static final String REPORT_FILEPATH=System.getProperty("user.dir")+"/target/report/Hrms.html";
+
+public static final String  OS_NAME=System.getenv("os.name");
+
+public static final String USER_NAME=System.getProperty("ueser.name");
+
+public static final String SCREENSHOTS_FILEPATH=System.getProperty("user.dir")+"target/screenshots/";
+
 }
 
 

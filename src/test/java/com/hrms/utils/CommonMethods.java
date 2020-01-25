@@ -2,6 +2,8 @@ package com.hrms.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
@@ -20,14 +22,13 @@ import com.hrms.testbase.BaseClass;
 //command+o--> for mac to see all methods within the class
 //ctrl+o--> for windows
 public class CommonMethods extends BaseClass {
-
+	
 	/**
 	 * This method will accept the alert
 	 * 
 	 * @throws NoAlertPresentException if alert is not present
 	 */
 	public static void acceptAlert() {
-
 		try {
 			Alert alert = driver.switchTo().alert();
 			alert.accept();
@@ -35,14 +36,12 @@ public class CommonMethods extends BaseClass {
 			System.out.println("Alert is not present");
 		}
 	}
-
 	/**
 	 * This methods will dismiss the alert
 	 * 
 	 * @throws NoAlertPresentException if alert is not present
 	 */
 	public static void dismissAlert() {
-
 		try {
 			Alert alert = driver.switchTo().alert();
 			alert.dismiss();
@@ -50,7 +49,6 @@ public class CommonMethods extends BaseClass {
 			System.out.println("Alert is not prresent");
 		}
 	}
-
 	/**
 	 * This method will get a text from the alert
 	 * 
@@ -58,7 +56,6 @@ public class CommonMethods extends BaseClass {
 	 * @throws NoAlertPresentException if alert is not present
 	 */
 	public static String getAlertText() {
-
 		try {
 			Alert alert = driver.switchTo().alert();
 			return alert.getText();
@@ -67,49 +64,42 @@ public class CommonMethods extends BaseClass {
 			return null;
 		}
 	}
-
 	/**
 	 * This method with switch to the frame
 	 * 
 	 * @param nameOrId
 	 */
 	public static void switchToFrame(String nameOrId) {
-
 		try {
 			driver.switchTo().frame(nameOrId);
 		} catch (NoSuchFrameException e) {
 			System.out.println("Frame is not present");
 		}
 	}
-
 	/**
 	 * This method with switch to the frame
 	 * 
 	 * @param element
 	 */
 	public static void switchToFrame(WebElement element) {
-
 		try {
 			driver.switchTo().frame(element);
 		} catch (NoSuchFrameException e) {
 			System.out.println("Frame is not present");
 		}
 	}
-
 	/**
 	 * This method with switch to the frame
 	 * 
 	 * @param index
 	 */
 	public static void switchToFrame(int index) {
-
 		try {
 			driver.switchTo().frame(index);
 		} catch (NoSuchFrameException e) {
 			System.out.println("Frame is not present");
 		}
 	}
-
 	/**
 	 * This method will click on the element using JSExecutor
 	 * 
@@ -119,7 +109,6 @@ public class CommonMethods extends BaseClass {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", element);
 	}
-
 	/**
 	 * This method will scroll until until specified element
 	 * 
@@ -129,7 +118,6 @@ public class CommonMethods extends BaseClass {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
-
 	/**
 	 * This method will scroll page down
 	 * 
@@ -139,7 +127,6 @@ public class CommonMethods extends BaseClass {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0," + pixel + ")");
 	}
-
 	/**
 	 * This method will scroll page up
 	 * 
@@ -149,20 +136,27 @@ public class CommonMethods extends BaseClass {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0, -" + pixel + ")");
 	}
-
 	/**
 	 * This method will take a screenshot
 	 * 
 	 * @param fileName
 	 */
-	public static void takeScreenshot(String fileName) {
+	public static String takeScreenshot(String fileName) {
+		
+		Date date=new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy_MMdd_HHmmss");
+		String timeStamp=sdf.format(date.getTime());
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File file = ts.getScreenshotAs(OutputType.FILE);
+		String scrshotFile=Constants.SCREENSHOTS_FILEPATH+fileName+".png";
+
 		try {
-			FileUtils.copyFile(file, new File("screenshot/" + fileName + ".png"));
+			FileUtils.copyFile(file, new File(scrshotFile));
 		} catch (IOException e) {
 			System.out.println("Cannot take a screenshot");
 		}
+
+		return scrshotFile;
 	}
 
 	/**
@@ -175,7 +169,6 @@ public class CommonMethods extends BaseClass {
 		element.clear();
 		element.sendKeys(value);
 	}
-
 	/**
 	 * This method will create an Object of WebDriverWait
 	 * 
@@ -185,7 +178,6 @@ public class CommonMethods extends BaseClass {
 		WebDriverWait wait = new WebDriverWait(driver, Constants.EXPLICIT_LOAD_TIME);
 		return wait;
 	}
-
 	/**
 	 * This method will wait until element becomes clickable
 	 * 
@@ -194,7 +186,6 @@ public class CommonMethods extends BaseClass {
 	public static void waitForClickability(WebElement element) {
 		getWaitObject().until(ExpectedConditions.elementToBeClickable(element));
 	}
-
 	/**
 	 * This method will wait until element becomes visible
 	 * 
@@ -203,7 +194,6 @@ public class CommonMethods extends BaseClass {
 	public static void waitForVisibility(WebElement element) {
 		getWaitObject().until(ExpectedConditions.visibilityOf(element));
 	}
-
 	/**
 	 * This method will wait until element becomes invisible
 	 * 

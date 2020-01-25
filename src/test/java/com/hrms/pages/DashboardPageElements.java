@@ -1,4 +1,5 @@
 package com.hrms.pages;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -6,11 +7,10 @@ import org.openqa.selenium.support.PageFactory;
 import com.hrms.testbase.BaseClass;
 import com.hrms.utils.CommonMethods;
 
-public class DashboardPageElements extends CommonMethods{
+public class DashboardPageElements extends CommonMethods {
 
 	@FindBy(linkText = "Leave")
 	public WebElement leaveLnk;
-
 
 	@FindBy(linkText = "Leave List")
 	public WebElement leaveList;
@@ -20,6 +20,9 @@ public class DashboardPageElements extends CommonMethods{
 
 	@FindBy(id = "menu_pim_addEmployee")
 	public WebElement addEmp;
+
+	@FindBy(id = "welcome")
+	public WebElement welcomeLnk;
 
 	public DashboardPageElements() {
 		PageFactory.initElements(BaseClass.driver, this);
@@ -35,5 +38,4 @@ public class DashboardPageElements extends CommonMethods{
 		jsClick(addEmp);
 	}
 }
-	
 

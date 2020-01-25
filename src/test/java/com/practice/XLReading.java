@@ -2,13 +2,18 @@ package com.practice;
 
 import java.io.FileInputStream;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.Test;
 
 public class XLReading {
 
 	@Test
 	public void read() throws Exception {
-		String filePath="/Users/Syntax/eclipse-workspace/SyntaxBatchV/HRMS/src/test/java/com/practice/Hello.xlsx";
+		String filePath="/Users/assel/eclipse-workspace/HRMS/src/test/java/com/practice/Hello.xlsx";
 		FileInputStream fis =new FileInputStream(filePath);
 		//to read excel we need to use different classes
 		//Workbook wbook=HSSFWorkbook() --> 2003 xfiles
